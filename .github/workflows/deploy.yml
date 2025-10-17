@@ -1,0 +1,49 @@
+# deploy.yml
+
+name: Deploy to GitHub Pages
+
+# Roda essa action toda vez que você der um push na branch 'main'
+on:
+  push:
+    branches: [ "main" ] # Mude para sua branch principal se for outra (ex: master)
+  workflow_dispatch:
+
+# Permite que a action faça o deploy em seu nome
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20 # Use a versão do Node que seu projeto usa
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build # Este comando gera a pasta 'dist'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Faz o upload do conteúdo da pasta 'dist'
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
