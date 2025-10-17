@@ -51,7 +51,7 @@ const Hero = () => {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect mb-8">
             <Sparkles className="w-4 h-4 text-yellow-300" />
-            <span className="text-sm font-medium">Powered by AI</span>
+            <span className="text-sm font-medium">Powered by TCS</span>
           </div>
         </motion.div>
 
@@ -134,5 +134,6 @@ const Hero = () => {
     </section>
   );
 };
+
 
 export default Hero;
