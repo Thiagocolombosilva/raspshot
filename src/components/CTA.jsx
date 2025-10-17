@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download, Smartphone } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { toast } from '@/components/ui/use-toast';
+import { Button } from './ui/button';
+import { toast } from './ui/use-toast';
 
 const CTA = () => {
   const handleDownload = () => {

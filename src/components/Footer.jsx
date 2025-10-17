@@ -1,6 +1,6 @@
 import React from 'react';
 import { Camera, Mail, Instagram, Twitter } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
+import { toast } from './ui/use-toast';
 
 const Footer = () => {
   const handleSocialClick = () => {
